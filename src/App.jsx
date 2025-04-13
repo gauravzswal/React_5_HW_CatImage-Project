@@ -19,31 +19,28 @@ function App() {
         <h4 className="text-center underline mt-4">Click On the image!</h4>
       </div>
 
-      <div className="w-[80%] items-center justify-center mt-8 flex gap-6 m-auto">
-        {images.map((ele) => {
-          return (
-            <>
-              <img
-                src={ele}
-                alt=""
-                className="w-[20%] object-cover border-1 h-[30vh] rounded-2xl shadow-2xl border-gray-200 hover:scale-[1.08] transition-all duration-300"
-                onClick={() => {
-                  setImage(ele);
-                }}
-              />
-            </>
-          );
-        })}
+      <div className="w-[90%] flex flex-wrap items-center justify-center gap-6 mt-8 m-auto">
+        {images.map((ele, index) => (
+          <img
+            key={index}
+            src={ele}
+            alt={`cat-${index}`}
+            className="w-[45%] sm:w-[40%] md:w-[30%] lg:w-[20%] h-[25vh] sm:h-[30vh] object-cover rounded-2xl shadow-2xl border border-gray-200 hover:scale-[1.08] transition-all duration-300"
+            onClick={() => setImage(ele)}
+          />
+        ))}
       </div>
 
-      <div className="w-[100%] mt-10 items-center flex justify-center flex-col overflow-x-hidden">
+      <div className="w-full mt-10 flex items-center justify-center flex-col overflow-x-hidden">
         {image.length > 0 && (
           <>
-            <h1 className="pb-4 text-black font-bold">Selected Image</h1>
+            <h1 className="pb-4 text-black font-bold text-xl sm:text-2xl">
+              Selected Image
+            </h1>
             <img
               src={image}
-              alt=""
-              className="w-[40%] object-cover border-1 h-[60vh] rounded-2xl shadow-2xl border-gray-200 hover:scale-[1.08] transition-all duration-300"
+              alt="selected"
+              className="w-[90%] sm:w-[70%] md:w-[50%]  h-[50vh] md:h-[60vh] object-cover rounded-2xl shadow-2xl border border-gray-200 hover:scale-[1.08] transition-all duration-300"
             />
           </>
         )}
